@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const Campground = require('./models/campground');
 
 mongoose.connect('mongodb://localhost:27017/camp-finder', {
   useNewUrlParser: true,
@@ -21,6 +22,17 @@ app.set('views', path.join(__dirname, 'views'));
 app.get('/', (req, res) => {
   res.render('home');
 });
+
+app.get('/makecamp', async (req, res) => {
+  const camp = new Campground({
+    titile: 'Second Camp',
+    price: 1150,
+    description: 'My second camp description',
+    location: 'Israel, Netanya',
+  });
+  await camp.save();
+  res.send(camp);
+})
 
 app.listen(3000, () => {
   console.log('Serving on  port 3000');
