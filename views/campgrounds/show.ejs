@@ -6,17 +6,23 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>
-    <%= camp.title %>
+    <%= campground.title %>
   </title>
 </head>
 
 <body>
   <h1>
-    <%= camp.title %>
+    <%= campground.title %>
   </h1>
   <h2>
-    <%= camp.location %>
+    <%= campground.location %>
   </h2>
+  <p>
+    <a href="/campgrounds/<%= campground._id %>/edit">Edit</a>
+  <form action="/campgrounds/<%= campground._id %>?_method=delete" method="post">
+    <button>Delete</button>
+  </form>
+  </p>
   <footer><a href="/campgrounds">To campgrounds list</a></footer>
 
 </body>
